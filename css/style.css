@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "SF Pro Display";
+  src: local("SF Pro Display"), url("../fonts/SFProDisplay-Regular.woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: local("SF Pro Display"), url("../fonts/SFProDisplay-Light.woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: local("SF Pro Display"), url("../fonts/SFProDisplay-Bold.woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -62,34 +86,30 @@ button {
   outline: none;
 }
 
-@font-face {
-  font-family: "SF Pro Display";
-  src: local("SF Pro Display"), url("./fonts/SFProDisplay-Regular.woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: local("SF Pro Display"), url("./fonts/SFProDisplay-Light.woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: local("SF Pro Display"), url("./fonts/SFProDisplay-Bold.woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+.site-wrap {
+  overflow: hidden;
+  background-color: #000;
 }
 
 .section {
   background-color: #000;
   padding: 8vw;
   height: 1120px;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  will-change: transform;
+}
+
+.scrollDown .section {
+  -webkit-transform: skewX(-3deg) rotate(-3deg);
+          transform: skewX(-3deg) rotate(-3deg);
+}
+
+.scrollUp .section {
+  -webkit-transform: skewX(3deg) rotate(3deg);
+          transform: skewX(3deg) rotate(3deg);
 }
 
 .section-title {
@@ -300,7 +320,7 @@ button {
   max-width: 504px;
 }
 
-.slide-nine-right ul li {
+.slide-eleven-right ul li {
   text-transform: uppercase;
   font-weight: 700;
   padding: 40px 0;
@@ -308,56 +328,56 @@ button {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.slide-nine-right ul li:first-child {
+.slide-eleven-right ul li:first-child {
   padding-top: 0;
 }
 
-.slide-nine-right ul li:last-child {
+.slide-eleven-right ul li:last-child {
   padding-bottom: 0;
   border: none;
 }
 
-.slide-ten-left-bottom .section-subtitle {
+.slide-twelve-left-bottom .section-subtitle {
   margin-bottom: 20px;
 }
 
-.slide-ten-left-bottom li:not(:last-child) {
+.slide-twelve-left-bottom li:not(:last-child) {
   margin-bottom: 15px;
 }
 
-.slide-ten-left-bottom a {
+.slide-twelve-left-bottom a {
   line-height: 1.5em;
   font-weight: 700;
 }
 
-.slide-ten-right div.slide-ten-right-top {
+.slide-twelve-right div.slide-ten-right-top {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 80px;
 }
 
-.slide-ten-right div.slide-ten-right-bottom {
+.slide-twelve-right div.slide-ten-right-bottom {
   padding-top: 80px;
 }
 
-.slide-ten-right div .section-subtitle {
+.slide-twelve-right div .section-subtitle {
   margin-bottom: 10px;
 }
 
-.slide-ten-right div .simple-text {
+.slide-twelve-right div .simple-text {
   margin-bottom: 30px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-.slide-ten-right div .simple-text:last-child {
+.slide-twelve-right div .simple-text:last-child {
   margin-bottom: 0;
 }
 
-.slide-eleven .section-title {
+.slide-thirteen .section-title {
   margin-bottom: 90px;
 }
 
-.slide-eleven-list {
+.slide-thirteen-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -368,22 +388,122 @@ button {
           justify-content: space-between;
 }
 
-.slide-eleven-list li {
+.slide-thirteen-list li {
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   width: calc(50% - 8.5vw / 2);
 }
 
-.slide-eleven-list li:not(:nth-last-child(-n+2)) {
+.slide-thirteen-list li:not(:nth-last-child(-n + 2)) {
   margin-bottom: 12.4vw;
 }
 
-.slide-twelve .section-subtitle {
+.slide-fourteen .section-subtitle {
   margin-bottom: 60px;
   text-transform: uppercase;
 }
 
-.slide-twelve .section-title {
+.slide-fourteen .section-title {
   margin-bottom: 60px;
+}
+
+/*Now the CSS*/
+.tree * {
+  margin: 0;
+  padding: 0;
+}
+
+.tree ul {
+  padding-top: 20px;
+  position: relative;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 20px 5px 0 5px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+.tree li::before, .tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%;
+  height: 20px;
+}
+
+.tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.tree li:only-child::after, .tree li:only-child::before {
+  display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree li:only-child {
+  padding-top: 0;
+}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.tree li:first-child::before, .tree li:last-child::after {
+  border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+.tree li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+}
+
+.tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+
+.tree li a {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #666;
+  font-family: arial, verdana, tahoma;
+  font-size: 11px;
+  display: inline-block;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
 }
 /*# sourceMappingURL=style.css.map */
