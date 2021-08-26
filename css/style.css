@@ -170,6 +170,7 @@ button {
 
 .slide-one-logo {
   margin: auto;
+  width: 51vw;
 }
 
 .slide-two > *:not(:last-child) {
