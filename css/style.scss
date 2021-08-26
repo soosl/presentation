@@ -52,7 +52,7 @@ body {
 	min-height: 100vh;
 	text-rendering: optimizeSpeed;
 	line-height: 1;
-	font-size: 25px;
+	font-size: 18px;
 	font-family: "SF Pro Display";
 	font-weight: 400;
 	color: #fff;
@@ -91,8 +91,10 @@ button {
 
 .section {
 	background-color: #000;
-	padding: 8vw;
-	height: 1120px;
+	// padding: 8vw;
+	padding: 4vw;
+	min-height: 100vh;
+	// height: 1120px;
 }
 
 .parallax-effect {
@@ -132,15 +134,19 @@ button {
 		&:nth-child(1) {
 			display: flex;
 			flex-direction: column;
-			padding-right: 8vw;
+			// padding-right: 8vw;
+			padding-right: 4vw;
 			justify-content: space-between;
 		}
 
 		&:nth-child(2) {
-			padding: 8vw;
+			// padding: 8vw;
+			padding: 4vw;
 			background-color: #111111;
-			width: calc(50% + 8vw);
-			margin: -8vw 0;
+			// width: calc(50% + 8vw);
+			width: calc(50% + 4vw);
+			// margin: -8vw 0;
+			margin: -4vw 0;
 		}
 	}
 }
