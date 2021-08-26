@@ -9,7 +9,7 @@ const update = () => {
 
     if (speed > 5) {
         speed = 5;
-    } else if (speed < 5) {
+    } else if (speed < -5) {
         speed = -5;
     }
 	
