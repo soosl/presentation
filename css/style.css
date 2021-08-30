@@ -68,7 +68,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #FD0037;
+  background-color: #fd0037;
   border-radius: 16px;
 }
 
@@ -213,7 +213,7 @@ button {
   width: 19vw;
   height: 2px;
   background-color: #fd0037;
-  margin-right: 10px;
+  margin-right: 47px;
 }
 
 .slide-five .section-title {
@@ -437,8 +437,9 @@ button {
 }
 
 /*We will use ::before and ::after to draw the connectors*/
-.tree li::before, .tree li::after {
-  content: '';
+.tree li::before,
+.tree li::after {
+  content: "";
   position: absolute;
   top: 0;
   right: 50%;
@@ -455,7 +456,8 @@ button {
 
 /*We need to remove left-right connectors from elements without 
 any siblings*/
-.tree li:only-child::after, .tree li:only-child::before {
+.tree li:only-child::after,
+.tree li:only-child::before {
   display: none;
 }
 
@@ -466,7 +468,8 @@ any siblings*/
 
 /*Remove left connector from first child and 
 right connector from last child*/
-.tree li:first-child::before, .tree li:last-child::after {
+.tree li:first-child::before,
+.tree li:last-child::after {
   border: 0 none;
 }
 
@@ -486,7 +489,7 @@ right connector from last child*/
 
 /*Time to add downward connectors from parents*/
 .tree ul ul::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 50%;
